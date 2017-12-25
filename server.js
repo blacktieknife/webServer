@@ -1,13 +1,16 @@
 const express = require('express');
-const hbs = require('hbs');
+const ejs = require('ejs');
 const fs = require('fs');
 
 const port = process.env.PORT || 8000;
 var app = express();
 
-hbs.registerPartials(__dirname+"/views/partials");
-app.set("view_engine",'hbs');
 
+app.set("view_engine",'ejs');
+
+
+//example of custom "middleware" to display a Maintenance page on any incoming requests
+//---------------------------------------//
 //app.use(function(req, resp, next){
 //     var data = {
 //        title:"Maintenance Page",
@@ -15,7 +18,10 @@ app.set("view_engine",'hbs');
 //    }
 //    resp.render('maintenance.hbs', data);
 //});
-app.use( function(req,resp,next){
+//--------------------------------------//
+
+//custom "middleware" to intercept anything coming in on the app & logs it to the root in server.log
+app.use(function(req,resp,next){
     var now = new Date().toDateString();
     var reqUrl= req.url;
     var reqMethod = req.method;
@@ -33,28 +39,28 @@ app.use( function(req,resp,next){
 app.use(express.static(__dirname+"/public/"));
 
 
-hbs.registerHelper("getCurrentYear", function(){
-    return new Date().getFullYear();
-});
-
-hbs.registerHelper("screamIt", function(text){
-    return text.toUpperCase();
-});
-
 app.get("/", function(req,resp){
     var data = {
         title:"Home Page",
-        body:"boner"
+        body:"Biffed on the landing page. oof"
     }
-   resp.render('home.hbs', data);
+   resp.render('home.ejs', data);
 })
 
 app.get("/about", function(req, resp){
     var data = {
         title:"About Page",
-        body:"party time in the osakrs Brichs"
+        body:"Hello. Im re-building the same thing 1000's of other people built. don't mind me."
     }
-   resp.render('about.hbs', data);
+   resp.render('about.ejs', data);
+});
+
+app.get("/projects", function(req, resp){
+    var data = {
+        title:"Projects Page",
+        body:"Here lie the dead & conquered projects of the past."
+    }
+   resp.render('projects.ejs', data);
 });
 
 app.get("/bad", function(req, resp){
