@@ -2,6 +2,8 @@ const express = require('express');
 const ejs = require('ejs');
 const fs = require('fs');
 
+var {fetchNav} = require('./fetchNav');
+
 const port = process.env.PORT || 8000;
 var app = express();
 
@@ -40,34 +42,52 @@ app.use(express.static(__dirname+"/public/"));
 
 
 app.get("/", function(req,resp){
-    var data = {
+ fetchNav().then(function(nav){
+      var data = {
         title:"Home Page",
-        body:"Biffed on the landing page. oof"
+        body:"Biffed on the landing page. oof",
+        nav:nav.nav
     }
-   resp.render('home.ejs', data);
-})
+ resp.render('home.ejs', data);
+ }).catch(function(err){
+  resp.send(err);
+});
+  
+});
 
 app.get("/about", function(req, resp){
-    var data = {
+    fetchNav().then(function(nav){
+      var data = {
         title:"About Page",
-        body:"Hello. Im re-building the same thing 1000's of other people built. don't mind me."
+        body:"Hello. Im re-building the same thing 1000's of other people built. don't mind me.",
+        nav:nav.nav
     }
    resp.render('about.ejs', data);
+    }).catch(function(err){
+      resp.send(err);
+    });
+    
 });
 
 app.get("/projects", function(req, resp){
-    var data = {
+    fetchNav().then(function(nav){
+        var data = {
         title:"Projects Page",
-        body:"Here lie the dead & conquered projects of the past."
+        body:"Here lie the dead & conquered projects of the past.",
+        nav:nav.nav
     }
    resp.render('projects.ejs', data);
+    }).catch(function(err){
+        resp.send(err);
+    });
+    
 });
 
 app.get("/bad", function(req, resp){
     resp.send({
         error:"Bad link, hombre~"
-    })
-})
+    });
+});
 
 app.listen(port,function(){
     console.log(`server listening on post ${port}`);

@@ -7,8 +7,12 @@
 <body>
     <span class="links">
         <ul>
-            <li><a href="/">home</a></li>
-            <li><a href="/about">about</a></li>
-            <li><a href="/projects">projects</a></li>
+            <% nav.forEach(function(navItem,i) {
+                if(navItem.visable) { %>
+                
+                <li><a href="<%=navItem.link %>"><%=navItem.name %></a></li>
+                    <% }
+                });%>
+            
         </ul>
     </span>
