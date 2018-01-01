@@ -3,16 +3,125 @@
 <head>
     <meta charset="utf-8">
     <title><%= title %></title>
+    <!--standard includes css-->
+    <link href="/includes/css/toastr.css" rel="stylesheet"/>
+    <link href="/includes/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/includes/css/jquery-ui.min.css" rel="stylesheet"/>
+    <link href="/includes/css/jquery-ui.structure.min.css" rel="stylesheet"/>
+    <!--standard includes css end-->
+    
+    <!--standard includes js-->
+    <script src="/includes/js/jquery-3.2.1.min.js"></script>
+    <script src="/includes/js/jquery-ui.min.js"></script>
+    <script src="/includes/js/bootstrap.min.js"></script>
+    <script src="/includes/js/toastr.js"></script>
+    <!--standard includes js end-->
+   
+  
     </head>
 <body>
-    <span class="links">
-        <ul>
+    <nav class="navbar navbar-default navLinks">
+        <div class="container">
+        <ul class="nav navbar-nav">
             <% nav.forEach(function(navItem,i) {
                 if(navItem.visable) { %>
                 
                 <li><a href="<%=navItem.link %>"><%=navItem.name %></a></li>
                     <% }
                 });%>
-            
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style='height:22px;border:solid 1px;'>black helicopters</span><span class="caret"></span></a>
+               
+                <ul class="dropdown-menu">
+                    <li style="text-align:center;"><span id="waves" style="cursor:pointer;">purple waves</span></li>
+                    <li style="text-align:center;"><span id="grass" style="cursor:pointer;">freshcut grass</span></li>
+                    <li style="text-align:center;"><span id="leo" style="cursor:pointer;">great job</span></li>
+            </ul>
+            </li>
         </ul>
-    </span>
+            </div>
+    </nav>
+    
+    
+  <script>
+      $(document).ready(function(){
+
+            
+    
+      })
+      
+      $("#waves").on("click", function(){
+          toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+         toastr.success("We did it guys, come on in..");
+      });
+      
+      $("#grass").on("click", function(){
+          toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+         toastr.warning("Time is short, get to it..");
+      });
+      
+      $("#leo").on("click", function(){
+          toastr.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-top-full-width",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": 0,
+  "extendedTimeOut": 0,
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut",
+  "tapToDismiss": false
+}
+  
+        toastr.error("You are about to Enter a restriced zone, Are you sure you want to continue?&nbsp;&nbsp;&nbsp;&nbsp;<button type='button' class='btn btn-primary btn-sm okgo'>Yes</button>&nbsp;&nbsp;<span type='button' class='btn btn-sm cancel'><b>Cancel</b></span>");
+     });
+    
+  
+     $(document).on("click", ".okgo", function(){
+            console.log("remove")
+            toastr.remove();
+        })
+      
+    </script>
+    
+<!-- container div start -->
+<div id="pageContent" class="container">
