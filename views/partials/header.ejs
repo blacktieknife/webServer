@@ -8,6 +8,7 @@
     <link href="/includes/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/includes/css/jquery-ui.min.css" rel="stylesheet"/>
     <link href="/includes/css/jquery-ui.structure.min.css" rel="stylesheet"/>
+    <link href="/includes/css/customStyle.css" rel="stylesheet"/>
     <!--standard includes css end-->
     
     <!--standard includes js-->
@@ -20,9 +21,18 @@
   
     </head>
 <body>
-    <nav class="navbar navbar-default navLinks">
-        <div class="container">
-        <ul class="nav navbar-nav">
+     <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navLinks">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">GAr</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navLinks">
+      <ul class="nav navbar-nav navbar-right">
             <% nav.forEach(function(navItem,i) {
                 if(navItem.visable) { %>
                 
@@ -33,14 +43,15 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span style='height:22px;border:solid 1px;'>black helicopters</span><span class="caret"></span></a>
                
                 <ul class="dropdown-menu">
-                    <li style="text-align:center;"><span id="waves" style="cursor:pointer;">purple waves</span></li>
-                    <li style="text-align:center;"><span id="grass" style="cursor:pointer;">freshcut grass</span></li>
-                    <li style="text-align:center;"><span id="leo" style="cursor:pointer;">great job</span></li>
+                    <li><span id="waves" style="cursor:pointer;">purple waves</span></li>
+                    <li><span id="grass" style="cursor:pointer;">freshcut grass</span></li>
+                    <li><span id="leo" style="cursor:pointer;">great job</span></li>
             </ul>
             </li>
-        </ul>
-            </div>
-    </nav>
+      </ul>
+    </div>
+  </div>
+</nav>
     
     
   <script>
@@ -123,5 +134,4 @@
       
     </script>
     
-<!-- container div start -->
-<div id="pageContent" class="container">
+

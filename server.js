@@ -44,8 +44,7 @@ app.use(express.static(__dirname+"/public/"));
 app.get("/", function(req,resp){
  fetchNav().then(function(nav){
       var data = {
-        title:"Home Page",
-        body:"Biffed on the landing page. oof",
+        title:"Welcome",
         nav:nav.nav
     }
  resp.render('home.ejs', data);

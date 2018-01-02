@@ -1,0 +1,35 @@
+.home-bg {
+background-color:#1abc9c;
+color: #ffffff;
+}
+
+.foot-bg {
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+.projects-bg {
+    background-color: #33adff;
+    color: #ffffff;
+}
+.container-fluid {
+ padding-top: 70px;
+ padding-bottom: 70px;
+}
+
+.navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+
+.navbar-nav li a:hover {
+    color: #1abc9c !important;
+}
+
+.dropdown li {
+    padding-left:5px;
+}
